@@ -21,7 +21,7 @@ def carregarAgenda():
 # Função para salvar as novas informaçoes no json    
 def salvarAgenda():
     with open('agenda.json', 'w') as arquivo:
-        json.dump(agenda, arquivo, indent=4) # Salva a agenda no json com indentação
+        json.dump(agenda, arquivo, indent=4)  
  
 # Função para mostrar todos os contatos na agenda
 def mostrarAgenda():
@@ -33,12 +33,12 @@ def mostrarAgenda():
             for contato in agenda:
                 for chave, valor in contato.items():
                     print(f"{chave}: {valor}")
-                print()  # Espaço vazio para separar cada contato
+                print()  
  
 def excluirContato(): # Função que exclui o contato
     nomeApagar = input("Digite o nome do contato que você quer excluir: ")
     for contato in agenda:
-        if contato["nome"].lower() == nomeApagar.lower(): # Verifica se o contato tem o mesmo nome 
+        if contato["nome"].lower() == nomeApagar.lower():  
             confirmacao = input("Tem certeza que deseja excluir? Digite S para confirmar ")
             if confirmacao.lower() == 's':
                 agenda.remove(contato)
@@ -89,11 +89,11 @@ def adicionarContato():
     salvarAgenda()
 
         
-# Menu principal
+
 agenda = carregarAgenda()
 
+# Menu
 while True:
-    # Exibe o menu de opções
     continuar = int(input(
         "\nEscolha uma opção:\n"
         "1 - Para adicionar contato\n"
@@ -105,23 +105,6 @@ while True:
         "Digite sua opção: "
     ))
  
- 
-    # if continuar == 1:
-    #     adicionarContato()
-    # elif continuar == 2:
-    #    excluirContato() 
-    # elif continuar == 3:
-    #     editarContato()
-    # elif continuar == 4:
-    #     mostrarAgenda()  
-    # elif continuar == 5:
-    #     pesquisaAgenda()
-    # elif continuar == 6:
-    #     break 
-    # else:
-    #     print("Opção inválida! Tente novamente.")
-
-
     match continuar:
         case 1:
             adicionarContato()
